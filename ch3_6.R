@@ -12,6 +12,11 @@ Z <- abs(X - Y)
 hist(Z, freq = FALSE) # pdf
 plot(ecdf(Z)) # cdf
 
+# Try to check the solution 1-(1-x)**2
+
+i = seq(0,1,0.01)
+plot(i,(1-(1-i)**2))
+
 # b) X/(X+Y) ----
 Z_2 <- X/(X+Y)
 

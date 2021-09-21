@@ -35,10 +35,12 @@ adam <- runif(nr_runs, 0, 30)
 billy <- runif(nr_runs, 0, 45)
 
 # a) Billy bob must wait for Adam ----
-wait_time <- adam-billy
-billy_waiting <- wait_time[wait_time > 0]
+
+#if adam arrives first, billy waits 0 minutes
+wait_time <- ifelse(adam-billy<0, 0, adam-billy)
+
 print("Billy average waiting time")
-mean(billy_waiting)
+mean(wait_time)
 # Billy will wait approx 10 minutes
 
 

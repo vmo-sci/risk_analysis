@@ -35,9 +35,5 @@ for(i in 1:frames){
 }
 
 library(gifski)
-png_files <- list.files(".", pattern = ".*png$", full.names = TRUE)
+png_files <- list.files(".", pattern = "./*png$", full.names = TRUE)
 gifski(png_files, gif_file = "animation.gif", delay = 0.1)
-
-#run ImageMagick
-my_command <- 'convert *.png -delay 3 -loop 0 animation.gif'
-system(my_command)

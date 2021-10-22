@@ -5,6 +5,7 @@
 # are unbiased and consistent, nonetheless
 # everyone is using the mean! Sensible?
 
+
 # Simulation set up:
 
 # 1. Fix, n, E(X), sd(X), R

@@ -108,7 +108,8 @@ n_observed <- n[101:465] # After 100 days we start observing hospital
 occupancy_rate <- n_observed/40
 
 # Solution to the first question:
-plot(occupancy_rate, type = 'l')
+plot(occupancy_rate, type = 'l', main = 'Occupancy rate during the year', 
+     xlab = 'Day', ylab = 'Occupancy rate')
 
 # Solution to the second question:
 hospital_40 <- hospital_simulation(nr_beds = 40, t.end = 100+10000)
@@ -139,8 +140,17 @@ end_result[63]
 end_result[64]
 
 h_64 <- hospital_simulation(nr_beds = 64, t.end = 10^4)
+h_64_plot <- unlist(h_64[1])
 nr_patients <- unlist(h_64[1])/64
 mean(nr_patients <= 0.85)
+plot(h_64_plot[9900:10000], type = 'l', xlab = 'day', ylab = 'Patients',
+     main = 'Last 100 Days in 64 bed hospital')
+abline(h = 0.85*64, col = 'red')
+text('85% occupancy',x=20, y = 58, col = 'red')
+
+hist(h_64_plot, breaks = 64, xlab = 'Beds occupied', main = '64 bed hospital')
+abline(v = 0.85*64, col = 'red')
+text('85% occupancy',x=58, y = 600, col = 'red')
 
 # Solution to problem 3:
 # We need 64 beds
@@ -173,7 +183,7 @@ for(i in (1:365)){
 }
 
 library(gifski)
-png_files <- list.files(".", pattern = "./*png$", full.names = TRUE)
+png_files <- list.files(".", pattern = "./*.png$", full.names = TRUE)
 gifski(png_files, gif_file = "animation.gif", delay = 0.1)
 
 
